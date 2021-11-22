@@ -42,19 +42,15 @@ $ pip install -r requirements.txt
 ```
 5. Создайте базу данных в PostgreSQL
 6. Подключите базу данных в `django_uploader/settings.py`
-7. Создайте файлы миграций
-```
-$ python3 manage.py makemigrations
-```
-8. Проведите миграции
+7. Проведите миграции
 ```
 $ python3 manage.py migrate
 ```
-9. Создайте суперпользователя
+8. Создайте суперпользователя
 ```
 $ python3 manage.py createsuperuser
 ```
-10. Запустите сервер
+9. Запустите сервер
 ```
 $ python3 manage.py runserver
 ```
