@@ -25,7 +25,7 @@
  - Django Rest Framework
  - PostgreSQL 
 
-# Установка
+# Установка без docker
 
 1. Скопируйте репозиторий
 2. Создайте виртальное окружение
@@ -55,6 +55,39 @@ $ python3 manage.py createsuperuser
 $ python3 manage.py runserver
 ```
 
+# Установка через docker
+
+1. Клонируйте репозиторий
+2. Откройте консоль и перейдите в папку репозитория
+3. Соберите docker-контейнер
+```
+$ docker-compose build
+```
+4. Запустите собранный контейнер
+```
+$ docker-compose up -d
+```
+5. Данная команда показывает список активных контейнеров
+```
+$ docker-compose ps
+```
+6. Проведите миграции
+```
+$ docker-compose exec web python3 manage.py migrate --noinput
+```
+7. Создайте суперпользователя
+```
+$ docker-compose exec web python3 manage.py createsuperuser
+```
+8. Данная команда показывает все установленные докер-контейнеры
+```
+$ docker-compose images
+```
+9. Данная команда останавливает и удаляет все докер-контейнеры
+```
+$ docker-compose down
+```
+
 # Эксплуатация
 
 **Используйте postman для создания запросов.**
@@ -63,15 +96,19 @@ $ python3 manage.py runserver
  - Создайте POST запрос на адрес http://127.0.0.1:8000/auth/users/
  - Во вкладке **body** выберете тип **form-data**
  - Укажите **key** - usrname, password, email, и **value** соответственно
+![Alt-текст](https://github.com/StFavn/ImageUploader/blob/main/1.png?raw=true)
 
 **Загрузка изображения**
  - Создайте POST запрос на адрес http://127.0.0.1:8000/upload/
  - Во вкладке **Authorization** выберете тип **Basic Auth**
  - Укажите username, password
+![Alt-текст](https://github.com/StFavn/ImageUploader/blob/main/2.1.png?raw=true)
  - Во вкладке **body** выберете тип **form-data**
  - Укажите **key** - image, укажите **тип поля** - file, выберете изображение для отправки
+![Alt-текст](https://github.com/StFavn/ImageUploader/blob/main/2.2.png?raw=true)
 
 **Просмотр загруженных изображений**
  - Создайте GET запрос на адрес http://127.0.0.1:8000/gallery/
  - Во вкладке **Authorization** выберете тип **Basic Auth**
  - Укажите username, password
+![Alt-текст](https://github.com/StFavn/ImageUploader/blob/main/3.png?raw=true)
