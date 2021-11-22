@@ -27,9 +27,58 @@
 
 # Установка
 
- - Скопировать репозиторий.
+1. Скопировать репозиторий.
+```
+$ 
+```
+2. Создайте виртальное окружение
+```
+$ python3 -m venv venv
+```
+3. Активируйте виртуальное окружение
+```
+$ source venv/bin/activate
+```
+4. Установите зависимости
+```
+$ pip install -r requirements.txt
+```
+5. Создайте базу данных в PostgreSQL
+6. Подключите базу данных в `django_uploader/settings.py`
+7. Создайте файлы миграций
+```
+$ python3 manage.py makemigrations
+```
+8. Проведите миграции
+```
+$ python3 manage.py migrate
+```
+9. Создайте суперпользователя
+```
+$ python3 manage.py createsuperuser
+```
+10. Запустите сервер
+```
+$ python3 manage.py runserver
+```
 
-    enter code here dsfsdfsfsdfs dfsdfsdfdf
+# Эксплуатация
 
- - Создайте виртальное окружение
-     python3 -m venv venv
+**Используйте postman для создания запросов.**
+
+**Авторизация пользователя:**
+ - Создайте POST запрос на адрес http://127.0.0.1:8000/auth/users/
+ - Во вкладке **body** выберете тип **form-data**
+ - Укажите **key** - usrname, password, email, и **value** соответственно
+
+**Загрузка изображения**
+ - Создайте POST запрос на адрес http://127.0.0.1:8000/upload/
+ - Во вкладке **Authorization** выберете тип **Basic Auth**
+ - Укажите username, password
+ - Во вкладке **body** выберете тип **form-data**
+ - Укажите **key** - image, укажите **тип поля** - file, выберете изображение для отправки
+
+**Просмотр загруженных изображений**
+ - Создайте GET запрос на адрес http://127.0.0.1:8000/gallery/
+ - Во вкладке **Authorization** выберете тип **Basic Auth**
+ - Укажите username, password
