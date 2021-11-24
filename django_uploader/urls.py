@@ -11,7 +11,7 @@ urlpatterns = [
     path('auth/', include('djoser.urls.jwt')),
     path('auth/', include('djoser.urls')),
     path('upload/', UploadImagesView),
-    path('gallery/', GetImagesView),
+    path('gallery/', GetImagesView, name='gallery'),
 ]
 
 if settings.DEBUG:
